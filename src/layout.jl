@@ -102,6 +102,14 @@ else
             )
 end
 
+    
+function insert!(parent::GtkBox, index::Int, child::GtkWidget)
+    push!(parent, child)
+    ccall((:gtk_box_reorder_child, libgtk), Void,  
+          (Ptr{GObject},Ptr{GObject},Int64), 
+          parent, child, index - 1)
+end
+
 ### GtkButtonBox
 if gtk_version == 3
     GtkButtonBoxLeaf(vertical::Bool) =
