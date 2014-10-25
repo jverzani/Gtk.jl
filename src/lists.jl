@@ -53,6 +53,9 @@ end
 delete!(cb::GtkComboBoxText,i::Integer) =
     (ccall((:gtk_combo_box_text_remove,libgtk),Void,(Ptr{GObject},Cint),cb,i-1); cb)
 
+empty!(cb::GtkComboBoxText) = (ccall((:gtk_combo_box_text_remove_all,Gtk.libgtk),Void,(Ptr{GObject},),cb); cb)
+
+
 immutable GtkTreeIter
     stamp::Cint
     user_data::Ptr{Void}
