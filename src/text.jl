@@ -13,7 +13,7 @@
 
 #TODO: GtkAccel manager objects
 
-GtkLabelLeaf(title) = GtkLabelLeaf(
+GtkLabelLeaf(title="") = GtkLabelLeaf(
     ccall((:gtk_label_new,libgtk),Ptr{GObject},(Ptr{Uint8},), bytestring(title)))
 
 GtkTextBufferLeaf() = GtkTextBufferLeaf(
