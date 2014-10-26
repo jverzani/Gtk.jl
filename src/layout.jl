@@ -104,10 +104,12 @@ end
 
     
 function insert!(parent::GtkBox, index::Int, child::GtkWidget)
+    index = max(1, min(length(parent)+1, index))
     push!(parent, child)
     ccall((:gtk_box_reorder_child, libgtk), Void,  
           (Ptr{GObject},Ptr{GObject},Int64), 
           parent, child, index - 1)
+    parent
 end
 
 ### GtkButtonBox
